@@ -1,0 +1,46 @@
+<div class="products">
+    <div class="contain">
+        <div class="products__container-card">
+            <div class="products__container">
+                <div class="filter">
+                    <input type="text" placeholder="¿Qué Buscas?">
+                    <input type="text" placeholder="¿Dónde?">
+                    <button mat-raised-button>BUSCAR</button>
+                </div>
+                <mat-card class="product_contain" *ngFor="let item of [1,2,3,4,5]">
+                    <mat-card-content class="product_item">
+                        <div class="info">
+                            <p><b>Departamento:</b> Lima</p>
+                            <p><b>Nombre:</b> Ejemplo</p>
+                            <div style="display: flex;">
+                                <p><b>Productos:</b></p>
+                                <div class="list-chips">
+                                    <div class="list-chips-item">Producto buscado</div>
+                                    <div class="list-chips-item">Producto #2</div>
+                                    <div class="list-chips-item">Producto #3</div>
+                                </div>
+                            </div>
+                            <p><b>Cantidad Mínima KG a entregar:</b> Ejemplo</p>
+                            <p><b>Cantidad KG a comprar:</b> Ejemplo</p>
+                            <p><b>Precio a pagar:</b> Ejemplo</p>
+                        </div>
+                        <div class="options">
+                            <p>Total:</p>
+                            <p>S/150.00</p>
+                            <div class="buttons">
+                                <button mat-raised-button (click)="buyProduct()">Comprar</button>
+                                <button mat-raised-button (click)="addCart()">Añadir al carrito</button>
+                            </div>
+                            <div class="date">
+                                <button mat-raised-button (click)="reserve()">Reservar</button>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput type="date">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

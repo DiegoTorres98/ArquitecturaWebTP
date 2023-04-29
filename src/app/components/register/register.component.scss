@@ -1,0 +1,66 @@
+.login {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.login__container {
+    width: 450px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 60px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.login__container h1,p,a {
+    text-decoration: none;
+    color: #008037;
+}
+
+.login__container h1 {
+    font-size: 3.4em;
+    font-weight: 500;
+}
+
+.login__container p {
+    font-size: 1em;
+}
+
+.login__container a {
+    font-weight: bold;
+}
+
+.login__container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login__container button {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #008037;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login__container .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login__container .row .mat-form-field {
+    width: 48%;
+}
+
+.login__container .radio_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}

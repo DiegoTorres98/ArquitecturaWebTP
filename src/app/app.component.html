@@ -1,0 +1,34 @@
+<div class="landing">
+  <div class="toolbar" role="banner" *ngIf="showPrincipalHeader">
+    <span>
+      <img src="../assets/logo.png" alt="">
+    </span>
+      <div class="spacer"></div>
+      <p class="productos" routerLink="/productos-temporada">
+        Productos en Temporada
+      </p>
+      <a>
+        <img src="../assets/carrito.svg" alt="" routerLink="/carrito">
+      </a>
+      <a mat-button [matMenuTriggerFor]="menu">
+        <img src="../assets/user.svg" alt="">
+      </a>
+      <mat-menu #menu="matMenu" xPosition="before" class="header__menu">
+        <button mat-menu-item routerLink="/historial-pedidos">Historial de compras</button>
+        <button mat-menu-item routerLink="/historial-reservas">Historial de reservas</button>
+        <button mat-menu-item routerLink="/login">Cerrar Sesión</button>
+      </mat-menu>
+  </div>
+  <div class="toolbar" style="font-size: 1.3em;" role="banner" *ngIf="!showPrincipalHeader">
+    <p>
+      Landing Page
+    </p>
+    <p style="margin-left: 40px; cursor: pointer;" routerLink="/productos-temporada">
+      Productos en Temporada
+    </p>
+  </div>
+  
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

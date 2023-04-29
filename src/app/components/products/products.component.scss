@@ -1,0 +1,80 @@
+.products {
+    display: flex;
+    align-items: center;
+}
+
+.contain {
+    padding: 0 10%;
+}
+
+.products__container-card {
+    width: 100%;
+}
+
+.products__container {
+    width: 100%;
+}
+
+.product_contain {
+    margin: 20px 0;
+}
+
+.products__container .product_item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter {
+    margin: 20px 0;
+}
+
+.filter input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin: 0 10px;
+    outline: 0;
+}
+
+button {
+    margin: 0 10px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #008037;
+    color: #fff;
+    cursor: pointer;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.options p {
+    font-size: 2em;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.list-chips {
+    display: flex;
+    margin: 0 10px;
+    overflow-x: auto;
+}
+
+.list-chips-item {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #008037;
+    font-size: .7em;
+    margin: 0 5px;
+}
