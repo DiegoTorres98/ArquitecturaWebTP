@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SeasonProduct } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-season-products',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeasonProductsComponent implements OnInit {
 
-  constructor() { }
+  products: SeasonProduct[] = [];
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productService.getSeasonProducts().subscribe(resp => {
+      this.products = resp;
+    })
+  }
+
+  search(title: string) {
+    this.router.navigate(['/productos'], { queryParams: { q: title } })
   }
 
 }

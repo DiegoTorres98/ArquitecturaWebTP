@@ -2,17 +2,9 @@
     <div class="season__container">
         <h1>Productos en temporada</h1>
         <div class="list">
-            <div class="item">
-                <p>Manzanas</p>
-                <button mat-button routerLink="/productos">BUSCAR</button>
-            </div>
-            <div class="item">
-                <p>Platanos</p>
-                <button mat-button routerLink="/productos">BUSCAR</button>
-            </div>
-            <div class="item">
-                <p>Lechugas</p>
-                <button mat-button routerLink="/productos">BUSCAR</button>
+            <div class="item" *ngFor="let product of products">
+                <p>{{ product.title }}</p>
+                <button mat-button (click)="search(product.title)">BUSCAR</button>
             </div>
         </div>
     </div>

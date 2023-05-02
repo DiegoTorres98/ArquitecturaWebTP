@@ -5,10 +5,18 @@
                 <img src="../../../assets/logo.png" alt="">
                 <h2>Apoya a miles de agricultores comprandoles directamente</h2>
                 <div class="inputs">
-                    <input type="text" placeholder="¿Qué Buscas?">
-                    <input type="text" placeholder="¿Dónde?">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="¿Qué buscas?" [(ngModel)]="searchInput">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Seleccione</mat-label>
+                        <mat-select matNativeControl required [(ngModel)]="departmentSelect">
+                            <mat-option value="" selected>-Seleccione-</mat-option>
+                            <mat-option [value]="item.name" *ngFor="let item of departments">{{ item.name }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
                 </div>
-                <button mat-raised-button routerLink="/productos">BUSCAR</button>
+                <button mat-raised-button (click)="search()">BUSCAR</button>
             </mat-card-content>
         </mat-card>
     </div>
