@@ -1,49 +1,46 @@
 <div class="login">
     <div class="login__container">
         <h1>Registrate</h1>
-        <form class="example-form">
+        <form class="example-form" [formGroup]="userForm">
             <mat-form-field class="example-full-width">
-              <input type="text" matInput placeholder="Nombre">
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <input type="email" matInput placeholder="Correo">
+              <input type="text" matInput placeholder="Nombre" formControlName="name">
             </mat-form-field>
             <div class="row">
                 <mat-form-field class="example-full-width">
-                    <input type="tel" matInput placeholder="Teléfono">
+                    <input type="tel" matInput placeholder="Teléfono" formControlName="phone">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input type="text" matInput placeholder="DNI">
+                    <input type="text" matInput placeholder="DNI" formControlName="dni">
                 </mat-form-field>
             </div>
             <div class="row">
                 <mat-form-field class="example-full-width">
-                    <input type="text" matInput placeholder="Departamento">
+                    <input type="text" matInput placeholder="Departamento" formControlName="department">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input type="text" matInput placeholder="Distrito">
+                    <input type="text" matInput placeholder="Distrito" formControlName="district">
                 </mat-form-field>
             </div>
             <mat-form-field class="example-full-width">
-              <input type="text" matInput placeholder="Dirección">
+              <input type="text" matInput placeholder="Dirección" formControlName="address">
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <input type="email" matInput placeholder="Email">
+              <input type="email" matInput placeholder="Email" formControlName="email">
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <input type="password" matInput placeholder="Contraseña">
+              <input type="password" matInput placeholder="Contraseña" formControlName="password">
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <input type="date" matInput placeholder="Día/Mes/Año">
+              <input type="date" matInput placeholder="Día/Mes/Año" formControlName="birthday">
             </mat-form-field>
             <label style="text-align: left;">Sexo</label>
-            <mat-radio-group aria-label="Select an option" class="radio_buttons">
-                <mat-radio-button value="1">Masculino</mat-radio-button>
-                <mat-radio-button value="2">Feminino</mat-radio-button>
-                <mat-radio-button value="3">No Especificar</mat-radio-button>
+            <mat-radio-group aria-label="Select an option" class="radio_buttons" formControlName="sex">
+                <mat-radio-button value="masculino">Masculino</mat-radio-button>
+                <mat-radio-button value="femenino">Feminino</mat-radio-button>
+                <mat-radio-button value="no especificar">No Especificar</mat-radio-button>
               </mat-radio-group>
           </form>
         <a href="javascript: void(0);" routerLink="/login">¿Ya tienes una cuenta? Inicia Sesión</a>
-        <button mat-button>Registrarse</button>
+        <button mat-button (click)="register()">Registrarse</button>
     </div>
 </div>

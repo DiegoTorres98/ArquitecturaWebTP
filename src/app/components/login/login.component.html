@@ -2,15 +2,15 @@
     <div class="login__container">
         <h1>Iniciar Sesión</h1>
         <p>Inicia sesión y encuentra lo que buscas</p>
-        <form class="example-form">
+        <form class="example-form" [formGroup]="loginForm">
             <mat-form-field class="example-full-width">
-              <input type="email" matInput placeholder="Correo">
+              <input type="email" matInput placeholder="Correo" formControlName="email">
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <input type="email" matInput placeholder="Contraseña">
+              <input type="password" matInput placeholder="Contraseña" formControlName="password">
             </mat-form-field>
           </form>
         <a href="javascript: void(0);" routerLink="/registrar">¿Olvidaste tu contraseña?</a>
-        <button mat-button routerLink="/">Iniciar Sesión</button>
+        <button mat-button (click)="login()">Iniciar Sesión</button>
     </div>
 </div>
