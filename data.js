@@ -160,8 +160,29 @@ module.exports = function () {
         name: "Ucayali"
       }
     ],    
-    history_sales: [],
-    history_reservations: []
+    history_sales: [
+      {
+        id: 1,
+        code: 'ZX98X7ZN',
+        name: 'Carlos',
+        amount: 20,
+        pay_amount: 200.50,
+        store: 'Gloria Store',
+        location: 'Calle Manzana 309'
+      }
+    ],
+    history_reservations: [
+      {
+        id: 1,
+        code: '8vc7b78vb',
+        name: 'Roberto',
+        amount: 35,
+        pay_amount: 432,
+        store: 'Don Pepe',
+        location: 'Jt Tello 234',
+        date: '10-05-2023'
+      }
+    ]
   }
   return data
 }

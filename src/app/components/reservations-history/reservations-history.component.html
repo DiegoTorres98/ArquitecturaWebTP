@@ -2,19 +2,19 @@
     <div class="history__container">
         <h1>Historial de Reservas</h1>
         <div class="list">
-            <div class="item" *ngFor="let item of [1,2,3,4,4,4]">
+            <div class="item" *ngFor="let item of reservations">
                 <mat-card>
                     <mat-card-content>
-                        <p><b>Código:</b> 123123123</p>
+                        <p><b>Código:</b> {{ item.code }}</p>
                         <div class="row">
-                            <p><b>Nombre:</b> Roberto</p>
-                            <p><b>Cantidad:</b> 10</p>
-                            <p><b>Monto Pagado:</b> 100</p>
+                            <p><b>Nombre:</b> {{ item.name }}</p>
+                            <p><b>Cantidad:</b> {{ item.amount }}</p>
+                            <p><b>Monto Pagado:</b> {{ item.pay_amount | currency: 'S/' }}</p>
                         </div>
                         <div class="row">
-                            <p><b>Tienda:</b> Lagarto Store</p>
-                            <p><b>Ubicación:</b> Jr Carlos Benavides</p>
-                            <p><b>Fecha a entregar:</b> 10/05/2023</p>
+                            <p><b>Tienda:</b> {{ item.store }}</p>
+                            <p><b>Ubicación:</b> {{ item.location }}</p>
+                            <p><b>Fecha a entregar:</b> {{ item.date }}</p>
                         </div>
                     </mat-card-content>
                 </mat-card>

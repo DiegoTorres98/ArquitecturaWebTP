@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryPurchase } from 'src/app/models/history';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-orders-history',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersHistoryComponent implements OnInit {
 
-  constructor() { }
+  purchases: HistoryPurchase[] = [];
+
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.getPurchases();
+  }
+
+  getPurchases() {
+    return this.productService.getShoppingHistory().subscribe(resp => {
+      this.purchases = resp;
+    })
   }
 
 }
