@@ -3,38 +3,49 @@
         <div class="products__container-card">
             <div class="products__container">
                 <div class="filter">
-                    <input type="text" placeholder="¿Qué Buscas?">
-                    <input type="text" placeholder="¿Dónde?">
-                    <button mat-raised-button>BUSCAR</button>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="¿Qué buscas?" [(ngModel)]="searchInput">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Seleccione</mat-label>
+                        <mat-select matNativeControl [(ngModel)]="departmentSelect">
+                            <mat-option value="" selected>-Seleccione-</mat-option>
+                            <mat-option [value]="item.name" *ngFor="let item of departments">{{ item.name }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button (click)="getProductsFilter()">BUSCAR</button>
                 </div>
-                <mat-card class="product_contain" *ngFor="let item of [1,2,3,4,5]">
+                <mat-card class="product_contain" *ngFor="let item of products">
                     <mat-card-content class="product_item">
                         <div class="info">
-                            <p><b>Departamento:</b> Lima</p>
-                            <p><b>Nombre:</b> Ejemplo</p>
+                            <p><b>Departamento:</b> {{ item.department }}</p>
+                            <p><b>Tienda:</b> {{ item.store }}</p>
+                            <p><b>Nombre:</b> {{ item.name }}</p>
                             <div style="display: flex;">
                                 <p><b>Productos:</b></p>
                                 <div class="list-chips">
-                                    <div class="list-chips-item">Producto buscado</div>
-                                    <div class="list-chips-item">Producto #2</div>
-                                    <div class="list-chips-item">Producto #3</div>
+                                    <div class="list-chips-item" *ngFor="let product of item?.products; let i = index"> #{{ i + 1 }} {{ product }}</div>
                                 </div>
                             </div>
-                            <p><b>Cantidad Mínima KG a entregar:</b> Ejemplo</p>
-                            <p><b>Cantidad KG a comprar:</b> Ejemplo</p>
-                            <p><b>Precio a pagar:</b> Ejemplo</p>
+                            <p><b>Cantidad Mínima KG a entregar:</b> {{ item.minimum_kg }}</p>
+                            <p><b>Precio KG:</b> {{ item.price | currency:'S/' }}</p>
+                            <p><b>Cantidad KG a comprar:</b> <mat-form-field class="example-full-width" style="margin-left: 10px;">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="number" [(ngModel)]="item.amount_kg">
+                              </mat-form-field></p>
+                            <p><b>Precio a pagar:</b> {{ (item.amount_kg *  item.price) | currency:'S/' }}</p>
                         </div>
                         <div class="options">
                             <p>Total:</p>
-                            <p>S/150.00</p>
+                            <p>{{ (item.amount_kg *  item.price) | currency:'S/' }}</p>
                             <div class="buttons">
-                                <button mat-raised-button (click)="buyProduct()">Comprar</button>
-                                <button mat-raised-button (click)="addCart()">Añadir al carrito</button>
+                                <button mat-raised-button (click)="buyProduct(item)">Comprar</button>
+                                <button mat-raised-button (click)="addCart(item)">Añadir al carrito</button>
                             </div>
                             <div class="date">
-                                <button mat-raised-button (click)="reserve()">Reservar</button>
+                                <button mat-raised-button (click)="reserve(item)">Reservar</button>
                                 <mat-form-field class="example-full-width">
-                                    <input matInput type="date">
+                                    <input matInput type="date" [(ngModel)]="item.reservation">
                                 </mat-form-field>
                             </div>
                         </div>

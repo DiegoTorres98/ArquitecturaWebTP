@@ -4,7 +4,7 @@
         <div class="list">
             <div class="item" *ngFor="let product of products">
                 <p>{{ product.title }}</p>
-                <button mat-button (click)="search(product.title)">BUSCAR</button>
+                <button mat-button (click)="search(product.query)">BUSCAR</button>
             </div>
         </div>
     </div>

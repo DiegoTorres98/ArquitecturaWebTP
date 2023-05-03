@@ -5,16 +5,16 @@
             <div class="item" *ngFor="let item of reservations">
                 <mat-card>
                     <mat-card-content>
-                        <p><b>Código:</b> {{ item.code }}</p>
+                        <p><b>Código:</b> {{ item.id }}</p>
                         <div class="row">
                             <p><b>Nombre:</b> {{ item.name }}</p>
-                            <p><b>Cantidad:</b> {{ item.amount }}</p>
-                            <p><b>Monto Pagado:</b> {{ item.pay_amount | currency: 'S/' }}</p>
+                            <p><b>Cantidad:</b> {{ item.amount_kg }}</p>
+                            <p><b>Monto Pagado:</b> {{ item.total | currency: 'S/' }}</p>
                         </div>
                         <div class="row">
                             <p><b>Tienda:</b> {{ item.store }}</p>
-                            <p><b>Ubicación:</b> {{ item.location }}</p>
-                            <p><b>Fecha a entregar:</b> {{ item.date }}</p>
+                            <p><b>Ubicación:</b> {{ item.department }}</p>
+                            <p><b>Fecha a entregar:</b> {{ item.reservation }}</p>
                         </div>
                     </mat-card-content>
                 </mat-card>

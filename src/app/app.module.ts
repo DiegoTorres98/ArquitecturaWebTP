@@ -22,6 +22,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { LandingComponent } from './components/landing/landing.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
     OrdersHistoryComponent,
     ReservationsHistoryComponent,
     ShoppingCartComponent,
-    ProductsComponent
+    ProductsComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

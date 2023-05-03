@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HistoryPurchase } from 'src/app/models/history';
+import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class OrdersHistoryComponent implements OnInit {
 
-  purchases: HistoryPurchase[] = [];
+  purchases: Product[] = [];
 
   constructor(private productService: ProductService) { }
 

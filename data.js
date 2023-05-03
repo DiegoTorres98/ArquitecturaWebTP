@@ -18,44 +18,64 @@ module.exports = function () {
     season_products: [
       {
         id: 1,
-        title: 'Manzanas'
+        title: 'Manzanas',
+        query: 'Manzana'
       },
       {
         id: 2,
-        title: 'Platanos'
+        title: 'Platanos',
+        query: 'Platano'
       },
       {
         id: 3,
-        title: 'Lechugas'
+        title: 'Lechugas',
+        query: 'Lechuga'
       }
     ],
     products: [
       {
         id: 1,
         department: 'Lima',
-        name: 'Manzana Chilena',
+        name: 'Manzana',
         products: ['Manzana Chilena', 'Naranja', 'Pepino'],
         minimum_kg: 30,
         amount_kg: 0,
-        reservation: ''
+        reservation: '',
+        price: 5.50,
+        store: 'Lala Store'
       },
       {
         id: 2,
         department: 'Ica',
-        name: 'Platano de Isla',
+        name: 'Platano',
         products: ['Platano Isla', 'Lechuga', 'Tomate'],
         minimum_kg: 20,
         amount_kg: 0,
-        reservation: ''
+        reservation: '',
+        price: 2.50,
+        store: 'Lucho Tienda'
       },
       {
-        id: 1,
+        id: 3,
         department: 'Amazonas',
-        name: 'Lechuga Fresca',
+        name: 'Lechuga',
         products: ['Lechuga Fresca', 'Camote', 'Papa'],
         minimum_kg: 30,
         amount_kg: 0,
-        reservation: ''
+        reservation: '',
+        price: 4,
+        store: 'Tienda Don Pepe'
+      },
+      {
+        id: 4,
+        department: 'Lambayeque',
+        name: 'Lechuga',
+        products: ['Lechuga Fresca', 'Mandarina', 'Zapallo'],
+        minimum_kg: 10,
+        amount_kg: 0,
+        reservation: '',
+        price: 3.50,
+        store: 'Peter Store'
       }
     ],
     departments: [
@@ -163,24 +183,29 @@ module.exports = function () {
     history_sales: [
       {
         id: 1,
-        code: 'ZX98X7ZN',
-        name: 'Carlos',
-        amount: 20,
-        pay_amount: 200.50,
-        store: 'Gloria Store',
-        location: 'Calle Manzana 309'
+        department: 'Arequipa',
+        name: 'Mandarina',
+        products: ['Mandarina', 'Lechuga', 'Zapallo'],
+        minimum_kg: 15,
+        amount_kg: 2,
+        reservation: '',
+        price: 5,
+        store: 'Peter Store',
+        total: 10
       }
     ],
     history_reservations: [
       {
         id: 1,
-        code: '8vc7b78vb',
-        name: 'Roberto',
-        amount: 35,
-        pay_amount: 432,
-        store: 'Don Pepe',
-        location: 'Jt Tello 234',
-        date: '10-05-2023'
+        department: 'Arequipa',
+        name: 'Higo',
+        products: ['Higo', 'Papaya', 'Papa'],
+        minimum_kg: 15,
+        amount_kg: 2,
+        reservation: '2023-01-14',
+        price: 6,
+        store: 'Peter Store',
+        total: 12
       }
     ]
   }

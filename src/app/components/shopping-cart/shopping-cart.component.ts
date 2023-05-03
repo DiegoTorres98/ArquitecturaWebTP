@@ -1,25 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Manzana', weight: 10, symbol: 'S/10.00'},
-  {position: 2, name: 'Mandarina', weight: 40, symbol: 'S/11.00'},
-  {position: 3, name: 'Platano', weight: 60, symbol: 'S/12.00'},
-  {position: 4, name: 'Naranja', weight: 90, symbol: 'S/13.00'},
-  {position: 5, name: 'Fresa', weight: 10, symbol: 'S/14.00'},
-  {position: 6, name: 'Uva', weight: 12, symbol: 'S/15.00'},
-  {position: 7, name: 'Mango', weight: 14, symbol: 'S/16.00'},
-  {position: 8, name: 'Higo', weight: 15, symbol: 'S/12.00'},
-  {position: 9, name: 'Papaya', weight: 18, symbol: 'S/11.00'},
-  {position: 10, name: 'Granada', weight: 20, symbol: 'S/16.00'},
-];
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -31,15 +13,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class ShoppingCartComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['name', 'amount_kg', 'total', 'action'];
+  dataSource = JSON.parse(localStorage.getItem('products') || '[]');
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar, private productService: ProductService) { }
 
   ngOnInit(): void {
   }
 
-  deleteItem() {
+  deleteItem(product_id: number) {
+
+    this.productService.saved_products = this.productService.saved_products.filter((item: Product) => item.id !== product_id);    
+    this.dataSource = this.productService.saved_products;
+    localStorage.setItem('products', JSON.stringify(this.productService.saved_products))
     this._snackBar.open('Producto Eliminado!', 'Cerrar', {
       horizontalPosition: 'center',
       verticalPosition: 'top',
@@ -48,11 +34,25 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   pay() {
-    this._snackBar.open('Compra Exitosa!', 'Cerrar', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass: ['success-snackbar', 'login-snackbar']
-    });
+    if(this.productService.saved_products.length > 0) {
+      this.productService.createHistoryPurchaseProduct(this.productService.saved_products);
+      this.dataSource = [];
+      this._snackBar.open('Compra Exitosa!', 'Cerrar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        panelClass: ['success-snackbar', 'login-snackbar']
+      });
+    }
+  }
+
+  getTotal(): number {
+    if(this.productService.saved_products.length > 1) {
+      return this.productService.saved_products.reduce((a: any,b: any) => a.total + b.total);
+    }
+    if(this.productService.saved_products.length === 1) {
+      return this.productService.saved_products[0].total;
+    }
+    return 0;
   }
 
 }

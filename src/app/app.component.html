@@ -1,5 +1,5 @@
 <div class="landing">
-  <div class="toolbar" role="banner" *ngIf="showPrincipalHeader">
+  <div class="toolbar" role="banner" *ngIf="showPrincipalHeader && showHeader">
     <span>
       <img src="../assets/logo.png" alt="">
     </span>
@@ -19,8 +19,8 @@
         <button mat-menu-item routerLink="/login">Cerrar Sesión</button>
       </mat-menu>
   </div>
-  <div class="toolbar" style="font-size: 1.3em;" role="banner" *ngIf="!showPrincipalHeader">
-    <p>
+  <div class="toolbar" style="font-size: 1.3em;" role="banner" *ngIf="!showPrincipalHeader && showHeader">
+    <p style="cursor: pointer;" routerLink="/">
       Landing Page
     </p>
     <p style="margin-left: 40px; cursor: pointer;" routerLink="/productos-temporada">

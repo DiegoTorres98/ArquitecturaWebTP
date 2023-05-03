@@ -23,8 +23,8 @@ export class SeasonProductsComponent implements OnInit {
     })
   }
 
-  search(title: string) {
-    this.router.navigate(['/productos'], { queryParams: { q: title } })
+  search(query: string) {
+    this.router.navigate(['/productos'], { queryParams: { q: query } })
   }
 
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { Department } from 'src/app/models/department';
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -8,33 +12,79 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private _snackBar: MatSnackBar) { }
+  searchInput: string = '';
+  departmentSelect: string = '';
+  departments: Department[] = [];
+
+  products: Product[] = [];
+  params!: any;
+  constructor(private _snackBar: MatSnackBar, private productService: ProductService, private router: ActivatedRoute) {
+    this.router.queryParams.subscribe(resp => {
+      this.params = resp;
+    })
+  }
 
   ngOnInit(): void {
+    this.getDepartments();
+    this.getProducts();
   }
 
-  buyProduct() {
-    this._snackBar.open('Producto Comprado!', 'Cerrar', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass: ['success-snackbar', 'login-snackbar']
-    });
+  getDepartments() {
+    this.productService.getDepartments().subscribe(resp => {
+      this.departments = resp;
+    })
   }
 
-  addCart() {
-    this._snackBar.open('Producto Agregado!', 'Cerrar', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass: ['success-snackbar', 'login-snackbar']
-    });
+  getProducts() {
+    this.productService.getProducts(this.params.q, this.params.dep).subscribe(resp => {
+      this.products = resp;      
+    })
   }
 
-  reserve() {
-    this._snackBar.open('Producto Reservado!', 'Cerrar', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass: ['success-snackbar', 'login-snackbar']
-    });
+  getProductsFilter() {
+    this.productService.getProducts(this.searchInput, this.departmentSelect).subscribe(resp => {
+      this.products = resp;      
+    })
+  }
+
+  buyProduct(product: Product) {
+    if(product.amount_kg > 0) {
+      this.productService.createHistoryPurchaseProduct([{...product, total: product.amount_kg * product.price}]);
+  
+      this._snackBar.open('Producto Comprado!', 'Cerrar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        panelClass: ['success-snackbar', 'login-snackbar']
+      });
+    }
+  }
+
+  addCart(product: Product) {
+    if(product.amount_kg > 0) {
+      this.productService.saved_products = [...this.productService.saved_products, {
+        ...product,
+        total: product.amount_kg * product.price
+      }];
+      localStorage.setItem('products', JSON.stringify(this.productService.saved_products));
+  
+      this._snackBar.open('Producto Agregado!', 'Cerrar', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        panelClass: ['success-snackbar', 'login-snackbar']
+      });
+    }
+  }
+
+  reserve(product: Product) {
+    if(product.reservation !== "") {
+      this.productService.reserveProduct({...product, total: product.amount_kg * product.price, id: null}).subscribe(resp => {
+        this._snackBar.open('Producto Reservado!', 'Cerrar', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar', 'login-snackbar']
+        });
+      })
+    }
   }
 
 }

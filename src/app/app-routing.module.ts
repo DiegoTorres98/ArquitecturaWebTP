@@ -8,12 +8,12 @@ import { OrdersHistoryComponent } from './components/orders-history/orders-histo
 import { ReservationsHistoryComponent } from './components/reservations-history/reservations-history.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductsComponent } from './components/products/products.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 const routes: Routes = [
   {
     path:'',
-    pathMatch: 'full',
-    redirectTo: 'login'
+    component: LandingComponent
   },
   {
     path: 'login',
