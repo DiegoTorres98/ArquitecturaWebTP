@@ -5,14 +5,14 @@ export interface SeasonProduct {
 }
 
 export interface Product {
-    id: number | null;
-    department: string;
-    name: string;
-    products: string[];
-    minimum_kg: number;
-    amount_kg: number;
-    reservation: string;
-    price: number;
-    store: string;
-    total: number;
+  id: number | null;
+  department: string;
+  name: string;
+  products: string[];
+  minimum_kg: number;
+  amount_kg: number;
+  reservation: string;
+  price: number;
+  store: string;
+  total: number;
 }

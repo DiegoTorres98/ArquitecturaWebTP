@@ -20,10 +20,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
+  logins() {
     if(this.loginForm.valid) {
       this.userService.login(this.loginForm.value);
     }
   }
 
+}
+
+
+desarrollar():void{
+  console.log(hola mundo)
 }
