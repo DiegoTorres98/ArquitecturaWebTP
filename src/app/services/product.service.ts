@@ -30,7 +30,7 @@ export class ProductService {
   getSeasonProducts(): Observable<SeasonProduct[]> {
     return this.http.get<SeasonProduct[]>(`${this.url}/season_products`);
   }
-
+/////////////
   getProducts(query: string, department: string): Observable<Product[]> {
     if(query && !department) {
       return this.http.get<Product[]>(`${this.url}/products?name=${query}`);
@@ -49,6 +49,7 @@ export class ProductService {
 
   createHistoryPurchaseProduct(products: Product[]){
     for(let item of products) {
+      item.id = null;
       this.http.post(`${this.url}/history_sales`, {...item, id: null}).subscribe(resp => {
         this.saved_products = [];
         localStorage.setItem('products', JSON.stringify(this.saved_products));
@@ -57,6 +58,7 @@ export class ProductService {
   }
 
   reserveProduct(product: Product): Observable<Product> {
+    product.id = null;
     return this.http.post<Product>(`${this.url}/history_reservations`, product);
   }
 }

@@ -38,8 +38,8 @@ module.exports = function () {
         department: 'Lima',
         name: 'Manzana',
         products: ['Manzana Chilena', 'Naranja', 'Pepino'],
-        minimum_kg: 30,
-        amount_kg: 0,
+        minimumKg: 30,
+        amountKg: 0,
         reservation: '',
         price: 5.50,
         store: 'Lala Store'
@@ -49,8 +49,8 @@ module.exports = function () {
         department: 'Ica',
         name: 'Platano',
         products: ['Platano Isla', 'Lechuga', 'Tomate'],
-        minimum_kg: 20,
-        amount_kg: 0,
+        minimumKg: 20,
+        amountKg: 0,
         reservation: '',
         price: 2.50,
         store: 'Lucho Tienda'
@@ -60,8 +60,8 @@ module.exports = function () {
         department: 'Amazonas',
         name: 'Lechuga',
         products: ['Lechuga Fresca', 'Camote', 'Papa'],
-        minimum_kg: 30,
-        amount_kg: 0,
+        minimumKg: 30,
+        amountKg: 0,
         reservation: '',
         price: 4,
         store: 'Tienda Don Pepe'
@@ -71,8 +71,8 @@ module.exports = function () {
         department: 'Lambayeque',
         name: 'Lechuga',
         products: ['Lechuga Fresca', 'Mandarina', 'Zapallo'],
-        minimum_kg: 10,
-        amount_kg: 0,
+        minimumKg: 10,
+        amountKg: 0,
         reservation: '',
         price: 3.50,
         store: 'Peter Store'
@@ -179,15 +179,15 @@ module.exports = function () {
         id: 25,
         name: "Ucayali"
       }
-    ],    
+    ],
     history_sales: [
       {
         id: 1,
         department: 'Arequipa',
         name: 'Mandarina',
         products: ['Mandarina', 'Lechuga', 'Zapallo'],
-        minimum_kg: 15,
-        amount_kg: 2,
+        minimumKg: 15,
+        amountKg: 2,
         reservation: '',
         price: 5,
         store: 'Peter Store',
@@ -200,8 +200,8 @@ module.exports = function () {
         department: 'Arequipa',
         name: 'Higo',
         products: ['Higo', 'Papaya', 'Papa'],
-        minimum_kg: 15,
-        amount_kg: 2,
+        minimumKg: 15,
+        amountKg: 2,
         reservation: '2023-01-14',
         price: 6,
         store: 'Peter Store',

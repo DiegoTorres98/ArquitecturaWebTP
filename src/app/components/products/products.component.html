@@ -24,22 +24,21 @@
                             <div style="display: flex;">
                                 <p><b>Productos:</b></p>
                                 <div class="list-chips">
-                                    <div class="list-chips-item" *ngFor="let product of item?.products; let i = index"> #{{ i + 1 }} {{ product }}</div>
+                                    <div class="list-chips-item" *ngFor="let product of getListProduct(item.products); let i = index"> #{{ i + 1 }} {{ product }}</div>
                                 </div>
                             </div>
-                            <p><b>Cantidad Mínima KG a entregar:</b> {{ item.minimum_kg }}</p>
+                            <p><b>Cantidad Mínima KG a entregar:</b> {{ item.minimumKg }}</p>
                             <p><b>Precio KG:</b> {{ item.price | currency:'S/' }}</p>
                             <p><b>Cantidad KG a comprar:</b> <mat-form-field class="example-full-width" style="margin-left: 10px;">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="number" [(ngModel)]="item.amount_kg">
+                                <input matInput type="number" [(ngModel)]="item.amountKg">
                               </mat-form-field></p>
-                            <p><b>Precio a pagar:</b> {{ (item.amount_kg *  item.price) | currency:'S/' }}</p>
+                            <p><b>Precio a pagar:</b> {{ (item.amountKg *  item.price) | currency:'S/' }}</p>
                         </div>
                         <div class="options">
                             <p>Total:</p>
-                            <p>{{ (item.amount_kg *  item.price) | currency:'S/' }}</p>
+                            <p>{{ (item.amountKg *  item.price) | currency:'S/' }}</p>
                             <div class="buttons">
-                                <button mat-raised-button (click)="buyProduct(item)">Comprar</button>
                                 <button mat-raised-button (click)="addCart(item)">Añadir al carrito</button>
                             </div>
                             <div class="date">

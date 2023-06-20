@@ -21,7 +21,6 @@ export class UserService {
         this.user = resp[0];
         this.router.navigate(['/buscar']);
       }
-      
     })
   }
 

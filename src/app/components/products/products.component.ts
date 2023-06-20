@@ -41,29 +41,21 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  getListProduct(prod: string){
+    return prod.split(',');
+  }
+
   getProductsFilter() {
     this.productService.getProducts(this.searchInput, this.departmentSelect).subscribe(resp => {
       this.products = resp;      
     })
   }
 
-  buyProduct(product: Product) {
-    if(product.amount_kg > 0) {
-      this.productService.createHistoryPurchaseProduct([{...product, total: product.amount_kg * product.price}]);
-  
-      this._snackBar.open('Producto Comprado!', 'Cerrar', {
-        horizontalPosition: 'center',
-        verticalPosition: 'top',
-        panelClass: ['success-snackbar', 'login-snackbar']
-      });
-    }
-  }
-
   addCart(product: Product) {
-    if(product.amount_kg > 0) {
+    if(product.amountKg >= product.minimumKg) {
       this.productService.saved_products = [...this.productService.saved_products, {
         ...product,
-        total: product.amount_kg * product.price
+        total: product.amountKg * product.price
       }];
       localStorage.setItem('products', JSON.stringify(this.productService.saved_products));
   
@@ -76,8 +68,8 @@ export class ProductsComponent implements OnInit {
   }
 
   reserve(product: Product) {
-    if(product.reservation !== "") {
-      this.productService.reserveProduct({...product, total: product.amount_kg * product.price, id: null}).subscribe(resp => {
+    if(product.reservation !== "" && product.amountKg >= product.minimumKg) {
+      this.productService.reserveProduct({...product, total: product.amountKg * product.price, id: null}).subscribe(resp => {
         this._snackBar.open('Producto Reservado!', 'Cerrar', {
           horizontalPosition: 'center',
           verticalPosition: 'top',

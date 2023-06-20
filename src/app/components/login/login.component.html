@@ -5,12 +5,15 @@
         <form class="example-form" [formGroup]="loginForm">
             <mat-form-field class="example-full-width">
               <input type="email" matInput placeholder="Correo" formControlName="email">
+              <mat-error *ngIf="loginForm.get('email')?.hasError('required')">El email es obligatorio</mat-error>
+              <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Debe ingresar un email valido</mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <input type="password" matInput placeholder="Contraseña" formControlName="password">
+              <mat-error *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es obligatoria</mat-error>
             </mat-form-field>
           </form>
         <a href="javascript: void(0);" routerLink="/registrar">¿No tienes una cuenta? Regístrate</a>
-        <button mat-button (click)="login()">Iniciar Sesión</button>
+        <button [disabled]="loginForm.invalid" mat-button (click)="login()">Iniciar Sesión</button>
     </div>
 </div>
